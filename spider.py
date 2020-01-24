@@ -19,8 +19,12 @@ class Spider(object):
             if id <= self.postId:
                 continue
             content = i.select(".tgme_widget_message_text")[0]
-            c1 = content.a.get_text()
-            c2 = content.b.get_text()
+            c1 = ''
+            c2 = ''
+            if content.a:
+                c1 = content.a.get_text()
+            if content.b:
+                c2 = content.b.get_text()
             title = c1 + " " + c2
             content = content.get_text()
             self.postId = id
