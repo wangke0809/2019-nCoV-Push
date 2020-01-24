@@ -1,6 +1,6 @@
 # 2019-nCoV-DingTalk-Push
 
-抓取 Telegram 频道 @nCoV2019进行钉钉通知。
+抓取 Telegram 频道 @nCoV2019 进行钉钉通知。
 
 频道地址：https://t.me/s/nCoV2019
 
@@ -12,7 +12,7 @@
 
 ```bash
 git clone https://github.com/wangke0809/2019-nCoV-DingTalk-Push.git
-pip install requirements
+pip install -r requirements
 ```
 
 ## 配置

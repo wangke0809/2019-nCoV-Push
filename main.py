@@ -20,6 +20,6 @@ if __name__ == '__main__':
                     continue
                 for m in msgs:
                     push.sendMsg(m[1], m[2])
-            time.sleep(60)
         except Exception as e:
             log.error("error: %s", e)
+        time.sleep(60)
