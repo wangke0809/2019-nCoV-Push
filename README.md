@@ -21,7 +21,7 @@ pip install -r requirements
 cp config.py.example config.py
 ```
 
-修改 API。
+修改 PushToken 即可使用，如有需要，后续考虑增加微信等推送渠道。
 
 ## 启动
 
