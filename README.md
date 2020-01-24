@@ -12,7 +12,7 @@
 
 ```bash
 git clone https://github.com/wangke0809/2019-nCoV-DingTalk-Push.git
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
 ## 配置
