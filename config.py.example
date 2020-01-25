@@ -4,6 +4,8 @@ PushKeyWord = '[Giao]'
 WeiboRef = 'https://weibo.com/u/7378955365/home?wvr=5&uut=fin&from=reg'
 WeiboCookie = '''cookie'''
 
+WeiboSCFUrl = 'url'
+
 LoggerJsonConfig = '''{
     "version":1,
     "disable_existing_loggers":false,
