@@ -1,6 +1,8 @@
-
 PushToken = 'xx'
 PushKeyWord = '[Giao]'
+
+WeiboRef = 'https://weibo.com/u/7378955365/home?wvr=5&uut=fin&from=reg'
+WeiboCookie = '''cookie'''
 
 LoggerJsonConfig = '''{
     "version":1,

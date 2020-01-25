@@ -7,7 +7,7 @@ import time
 log = Logger.getLogger("nCoV", config.LoggerJsonConfig)
 
 if __name__ == '__main__':
-    push = Push(config.PushToken, config.PushKeyWord)
+    push = Push(config.PushToken, config.PushKeyWord, config.WeiboRef, config.WeiboCookie)
     spider = Spider()
     setup = True
     while True:
@@ -18,8 +18,14 @@ if __name__ == '__main__':
                 if setup:
                     setup = False
                     continue
-                for m in msgs:
-                    push.sendMsg(m[1], m[2])
+                for id, tag, city, title, text, url in msgs:
+                    if tag:
+                        pushTitle = "#" + tag + "#"
+                    if city:
+                        pushTitle += "#" + city + "#"
+                    pushTitle += "【" + title + "】"
+                    pushText = pushTitle + "\r\n" + text + " 【转自：" + url + ' 】'
+                    push.sendMsg(pushTitle, pushText)
         except Exception as e:
             log.error("error: %s", e)
         time.sleep(60)

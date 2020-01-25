@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import re
 
 
 class Spider(object):
@@ -19,16 +20,37 @@ class Spider(object):
             if id <= self.postId:
                 continue
             content = i.select(".tgme_widget_message_text")[0]
+            aTags = content.find_all('a')
             c1 = ''
             c2 = ''
+            city = None
+            ref = None if 'return confirm' not in aTags[-1].get("onclick") else (
+                aTags[-1], aTags[-1].get_text(), aTags[-1].get("href"))
             if content.a:
                 c1 = content.a.get_text()
-            if content.b:
-                c2 = content.b.get_text()
-            title = c1 + " " + c2
-            content = content.get_text()
+                c1 = c1.replace("#", "")
+            title = re.findall(r'【(.*?)】', content.get_text(), re.S)
+            if len(title) > 0:
+                c2 = title[0]
+                citys = c2.split(" ")
+                for c in citys:
+                    if '#' in c:
+                        c2 = c2.replace(c, c + "#")
+                        city = c.replace("#", "").replace("【", "").strip()
+                        break
+            tag = c1.strip()
+            if city:
+                title = c2.replace("#", "").replace("【", "").strip().replace("】", "").strip()
+            else:
+                title = c2.replace("【", "").strip().replace("】", "").strip()
+            title = title.replace(" ", "")
+            text = content.get_text()
+            ret = re.findall(r'】(.*?)$', text, re.S)
+            if len(ret) > 0:
+                text = ret[0]
+                text = text.strip()
             self.postId = id
-            res.append((id, title, content))
+            res.append((id, tag, city, title, text, ref[2]))
         return res
 
 
