@@ -24,7 +24,7 @@ if __name__ == '__main__':
                     if city:
                         pushTitle += "#" + city + "#"
                     pushTitle += "【" + title + "】"
-                    pushText = pushTitle + "\r\n" + text + " 【转自：" + url + ' 】'
+                    pushText = "#疫情聚合#" + pushTitle + "\r\n" + text + " 【转自：" + url + ' 】'
                     push.sendMsg(pushTitle, pushText)
         except Exception as e:
             log.error("error: %s", e)
