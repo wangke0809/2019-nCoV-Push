@@ -7,7 +7,7 @@ import time
 log = Logger.getLogger("nCoV", config.LoggerJsonConfig)
 
 if __name__ == '__main__':
-    push = Push(config.PushToken, config.PushKeyWord, config.WeiboRef, config.WeiboCookie)
+    push = Push(config.PushToken, config.PushKeyWord, config.WeiboRef, config.WeiboCookie, config.WeiboSCFUrl)
     spider = Spider()
     setup = True
     while True:
