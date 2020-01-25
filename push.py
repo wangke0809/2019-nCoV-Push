@@ -5,17 +5,21 @@ from weibo import Weibo
 class Push(object):
 
     def __init__(self, token=None, keyWord=None, weiboRef=None, weiboCookie=None):
+        self.useDingTalk = False
+        self.useWeibo = False
         if token and keyWord:
+            self.useDingTalk = True
             self.d = DingtalkChatbot(
                 'https://oapi.dingtalk.com/robot/send?access_token=%s' % token)
         self.keyWord = keyWord
         if weiboRef and weiboCookie:
+            self.useWeibo = True
             self.weibo = Weibo(weiboRef, weiboCookie)
 
     def sendMsg(self, title, msg, is_at_all=False):
-        if self.d:
+        if self.useDingTalk:
             self.d.send_markdown(title=self.keyWord + title, text=msg, is_at_all=is_at_all)
-        if self.weibo:
+        if self.useWeibo:
             self.weibo.send(msg)
 
 
