@@ -5,21 +5,14 @@ from spider import Spider
 import time
 from state import State
 import traceback
-import argparse
 
 log = Logger.getLogger("nCoV", config.LoggerJsonConfig)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--token", required=True, help="DingTalk Token")
-    parser.add_argument("--keyword", required=True, help="DingTalk keyword")
-    parser.add_argument("--weibo", required=True, help="Weibo scf url")
-    parser.add_argument("--redis", required=True, help="redis url")
-    args = parser.parse_args()
-    token = parser.token
-    keyword = parser.keyword
-    weiboScf = parser.weibo
-    redisUrl = parser.redis
+    token = config.PushToken
+    keyword = config.PushKeyWord
+    weiboScf = config.WeiboSCFUrl
+    redisUrl = config.Redis
     push = Push(token=token, keyWord=keyword, weiboSCF=weiboScf)
     spider = Spider()
     state = State(redisUrl)

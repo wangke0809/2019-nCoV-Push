@@ -58,7 +58,7 @@ class Spider(object):
 
 if __name__ == '__main__':
     s = Spider()
-    s.postId = 700
+    s.postId = 717
     res = s.getPosts()
     print(res)
     res = s.getPosts()
