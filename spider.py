@@ -24,6 +24,7 @@ class Spider(object):
             c1 = ''
             c2 = ''
             city = None
+            ref = None
             if aTags:
                 ref = None if 'return confirm' not in aTags[-1].get("onclick") else (
                     aTags[-1], aTags[-1].get_text(), aTags[-1].get("href"))
@@ -51,12 +52,13 @@ class Spider(object):
                 text = ret[0]
                 text = text.strip()
             self.postId = id
-            res.append((id, tag, city, title, text, ref[2] if ref else None))
+            res.append((id, tag, city, title, text, ref[2] if ref is not None else None))
         return res
 
 
 if __name__ == '__main__':
     s = Spider()
+    s.postId = 700
     res = s.getPosts()
     print(res)
     res = s.getPosts()
