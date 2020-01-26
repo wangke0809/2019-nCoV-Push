@@ -20,6 +20,11 @@ jobs:
         pip install -r requirements.txt
         
     - name: Run
+      env: 
+        DingTalkToken: ${{ secrets.DingTalkToken }}
+        DingTalkWord: ${{ secrets.DingTalkWord }}
+        RedisUrl: ${{ secrets.RedisUrl }}
+        WeiboUrl: ${{ secrets.WeiboUrl }}
       run: |
         cp config.py.example config.py
         python main.py
