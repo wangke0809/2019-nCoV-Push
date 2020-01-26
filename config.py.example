@@ -1,10 +1,14 @@
-PushToken = 'xx'
-PushKeyWord = '[Giao]'
+import os
 
-WeiboRef = 'https://weibo.com/u/7378955365/home?wvr=5&uut=fin&from=reg'
-WeiboCookie = '''cookie'''
+PushToken = os.environ['DingTalkToken']
+PushKeyWord = os.environ['DingTalkWord']
 
-WeiboSCFUrl = 'url'
+WeiboRef = None
+WeiboCookie = None
+
+WeiboSCFUrl = os.environ['WeiboUrl']
+
+Redis = os.environ['RedisUrl']
 
 LoggerJsonConfig = '''{
     "version":1,
