@@ -21,4 +21,5 @@ jobs:
         
     - name: Run
       run: |
+        cp config.py.example config.py
         python main.py
