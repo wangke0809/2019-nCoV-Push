@@ -24,8 +24,9 @@ class Spider(object):
             c1 = ''
             c2 = ''
             city = None
-            ref = None if 'return confirm' not in aTags[-1].get("onclick") else (
-                aTags[-1], aTags[-1].get_text(), aTags[-1].get("href"))
+            if aTags:
+                ref = None if 'return confirm' not in aTags[-1].get("onclick") else (
+                    aTags[-1], aTags[-1].get_text(), aTags[-1].get("href"))
             if content.a:
                 c1 = content.a.get_text()
                 c1 = c1.replace("#", "")
@@ -50,7 +51,7 @@ class Spider(object):
                 text = ret[0]
                 text = text.strip()
             self.postId = id
-            res.append((id, tag, city, title, text, ref[2]))
+            res.append((id, tag, city, title, text, ref[2] if ref else None))
         return res
 
 
