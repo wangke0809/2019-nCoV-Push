@@ -45,14 +45,14 @@ if __name__ == '__main__':
         usrAction = False
 
     push = Push(token=config.PushToken, keyWord=config.PushKeyWord, weiboSCF=config.WeiboSCFUrl,
-                weiboRef=config.WeiboRef, weiboCookie=config.WeiboCookie)
+                weiboRef=config.WeiboRef, weiboCookie=config.WeiboCookie, weixinToken=config.WeixinToken)
     spider = Spider()
 
     if usrAction:
         state = State(config.Redis)
         spider.postId = state.getPostId()
     else:
-        spider.postId = 0
+        spider.postId = 741
 
     while True:
         run()

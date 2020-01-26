@@ -1,14 +1,25 @@
 import os
 
+# 修改为 钉钉群 机器人 Token 参考：https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq/26eaddd5
+# 不启用修改为 None
 PushToken = os.environ['DingTalkToken']
 PushKeyWord = os.environ['DingTalkWord']
 
+# 如需启用，需要手动抓包获取 Token，不启用保持默认
 WeiboRef = None
 WeiboCookie = None
 
+# 发微博云函数，需要部署云函数
+# 不启用修改为 None
 WeiboSCFUrl = os.environ['WeiboUrl']
 
+# 使用 github action 时需要使用 redis 记录上次抓取的信息 id
+# 不使用 action 设置为 None 即可
 Redis = os.environ['RedisUrl']
+
+# 微信 Server酱 push，获取 Token 参考：http://sc.ftqq.com/3.version
+# 不启用修改为 None
+WeixinToken = None
 
 LoggerJsonConfig = '''{
     "version":1,
