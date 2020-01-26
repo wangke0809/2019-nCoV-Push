@@ -23,7 +23,7 @@ class Spider(object):
             aTags = content.find_all('a')
             c1 = ''
             c2 = ''
-            city = None
+            city = ""
             ref = None
             if aTags:
                 ref = None if 'return confirm' not in aTags[-1].get("onclick") else (
@@ -52,7 +52,7 @@ class Spider(object):
                 text = ret[0]
                 text = text.strip()
             self.postId = id
-            res.append((id, tag, city, title, text, ref[2] if ref is not None else None))
+            res.append((id, tag, city, title, text, ref[2] if ref is not None else ""))
         return res
 
 
