@@ -17,7 +17,6 @@ jobs:
         python-version: 3.7
     - name: Install dependencies
       run: |
-        git checkout action
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
@@ -29,4 +28,4 @@ jobs:
         WeiboUrl: ${{ secrets.WeiboUrl }}
       run: |
         cp config.py.example config.py
-        python main.py
+        python main.py action
