@@ -26,6 +26,8 @@ def run():
                 pushTitle += "【" + title + "】"
                 pushText = "#疫情聚合#" + pushTitle + "\r\n" + text + " 【转自：" + url + ' 】'
                 log.info("send msg")
+                if "pinned" in pushText:
+                    continue
                 push.sendMsg(pushTitle, pushText)
                 if usrAction:
                     state.setPostId(spider.postId)
