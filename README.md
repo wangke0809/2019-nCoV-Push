@@ -60,3 +60,9 @@ python main.py
 Github Actions 需要通过 Redis 记录已通知消息 id，配置文件中 `Redis` 配置项格式为 `redis://:password@host:6379/0`。
 
 已经配置了每隔 5 分钟自动运行脚本，需要在配置文件中通过环境变量配置需要使用的通知方式，同时将通知需要的 Token 设置在项目的 `secret`里。
+
+## 效果预览
+
+| ![](https://github.com/wangke0809/2019-nCoV-push/blob/master/imgs/DingTalk.jpg?raw=true) | ![](https://github.com/wangke0809/2019-nCoV-push/blob/master/imgs/Wechat.jpg?raw=true) | ![](https://github.com/wangke0809/2019-nCoV-push/blob/master/imgs/Weibo.jpg?raw=true) |
+| :----------------------------------: | :----------------------------------: | :----------------------------------: |
+|               钉钉群机器人               |               微信Server酱               |               微博               |
