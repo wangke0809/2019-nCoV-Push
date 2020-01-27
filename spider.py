@@ -41,7 +41,7 @@ class Spider(object):
                         city = c.replace("#", "").replace("【", "").strip()
                         break
             tag = c1.strip()
-            if city:
+            if city != "":
                 title = c2.replace("#", "").replace("【", "").strip().replace("】", "").strip()
             else:
                 title = c2.replace("【", "").strip().replace("】", "").strip()

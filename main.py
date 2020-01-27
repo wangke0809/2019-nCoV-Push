@@ -18,6 +18,9 @@ def run():
         if len(msgs) > 0:
             for id, tag, city, title, text, url in msgs:
                 i += 1
+                if cityFilter and city != "":
+                    if city not in cityFilter:
+                        continue
                 pushTitle = ""
                 if tag:
                     pushTitle = "#" + tag + "#"
@@ -49,6 +52,8 @@ if __name__ == '__main__':
     push = Push(token=config.PushToken, keyWord=config.PushKeyWord, weiboSCF=config.WeiboSCFUrl,
                 weiboRef=config.WeiboRef, weiboCookie=config.WeiboCookie, weixinToken=config.WeixinToken)
     spider = Spider()
+
+    cityFilter = config.City
 
     if usrAction:
         state = State(config.Redis)
