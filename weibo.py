@@ -21,9 +21,9 @@ class Weibo(object):
         }
 
     def send(self, text):
-        ts = int(time.time() * 1000)
-        post_str = f'location=page_100505_manage&text={urllib.parse.quote(text)}&style_type=1&pdetail=1005052216356441&isReEdit=false&rank=0&pub_type=dialog&_t=0'
-        url = f'https://weibo.com/aj/mblog/add?ajwvr=6&__rnd={ts}'
+        post_str = 'location=page_100505_manage&text=' + urllib.parse.quote(
+            text) + '&style_type=1&pdetail=1005052216356441&isReEdit=false&rank=0&pub_type=dialog&_t=0'
+        url = 'https://weibo.com/aj/mblog/add?ajwvr=6&__rnd=' + str(int(time.time() * 1000))
         res = requests.post(url, data=post_str, headers=self.hdrs).content.decode('gbk')
         j = json.loads(res)
         if j['code'] == '100000':
@@ -34,5 +34,6 @@ class Weibo(object):
 
 if __name__ == '__main__':
     import config
+
     weibo = Weibo(config.WeiboRef, config.WeiboCookie)
     weibo.send("武汉加油！")
