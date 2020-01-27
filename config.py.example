@@ -1,5 +1,11 @@
 import os
 
+# 数据源
+# 可以访问 Telegram 设置为 None
+TelegramMirror = None
+# 使用镜像站，镜像站数据来自 http://2019ncov.tk/
+# TelegramMirror = 'http://47.75.131.65:9918/api'
+
 # 修改为 钉钉群 机器人 Token 参考：https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq/26eaddd5
 # 不启用修改为 None
 PushToken = os.environ['DingTalkToken']
@@ -22,8 +28,8 @@ Redis = os.environ['RedisUrl']
 WeixinToken = None
 
 # 关注的城市，所有设置为 None
-# 其他设置为字符串即可，比如
-# City = "北京，武汉，天津"
+# 其他设置为字符串即可，使用空格分割多个城市，比如
+# City = "北京 武汉 天津"
 City = None
 
 LoggerJsonConfig = '''{

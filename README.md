@@ -35,6 +35,8 @@ cp config.py.example config.py
 
 支持过滤城市进行推送，在配置文件中配置需要通知的城市。
 
+考虑到部分同学墙内部署，增加了镜像站爬虫，数据来自墙内镜像地址：http://2019ncov.tk/，在配置文件中配置 `TelegramMirror` 即可。
+
 ### 微信通知
 
 微信通知使用方糖大叔的 [Server酱](http://sc.ftqq.com/3.version)，修改配置文件填写 Token 即可。
