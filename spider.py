@@ -25,7 +25,7 @@ class Spider(object):
             c2 = ''
             city = ""
             ref = None
-            if aTags:
+            if aTags and aTags[-1].get("onclick"):
                 ref = None if 'return confirm' not in aTags[-1].get("onclick") else (
                     aTags[-1], aTags[-1].get_text(), aTags[-1].get("href"))
             if content.a:
