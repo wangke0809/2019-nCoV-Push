@@ -38,6 +38,7 @@ def run():
                         pushTitle += "#" + city + "#"
                     pushTitle += "【" + title + "】"
                     pushText = "#疫情聚合#" + pushTitle + "\r\n" + text + " 【转自：" + url + ' 】'
+                    pushText = pushText.replace('【】', '')
                     if "pinned" in pushText:
                         continue
                 if cityFilter and not isCityInTitle(cityFilter, pushTitle):
