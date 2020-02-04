@@ -1,6 +1,6 @@
 # 2019-nCoV-Push
 
-抓取 Telegram 频道 @nCoV2019 进行通知。
+武汉新冠状病毒肺炎疫情信息推送：抓取 Telegram 频道 @nCoV2019 进行通知。
 
 现在已经支持转发频道内容到微信，钉钉群和微博 [@聚合提醒](https://www.weibo.com/u/7378955365)。
 
@@ -18,7 +18,7 @@
 
 - Python3 +
 
-在 Python3.6, Python3.7 下经过测试。
+在 Python3.5, Python3.6, Python3.7 下经过测试。
 
 ## 安装
 
@@ -61,9 +61,27 @@ python main.py
 
 ### Github Actions 定时启动
 
+Github Actions 运行时可直接访问 Telegram ，解决了国内服务器不能访问某些资源的问题，运行记录见：[这里](https://github.com/wangke0809/2019-nCoV-Push/actions)
+
 Github Actions 需要通过 Redis 记录已通知消息 id，配置文件中 `Redis` 配置项格式为 `redis://:password@host:6379/0`。
 
-已经配置了每隔 5 分钟自动运行脚本，需要在配置文件中通过环境变量配置需要使用的通知方式，同时将通知需要的 Token 设置在项目的 `secret`里。
+已经配置了每隔 5 分钟[自动运行脚本](https://github.com/wangke0809/2019-nCoV-Push/blob/master/.github/workflows/pythonapp.yml)，需要在配置文件中通过环境变量配置需要使用的通知方式，同时将通知需要的 Token 设置在项目的 `secret`里。
+
+需要的环境变量：
+
+```yaml
+DingTalkToken: ${{ secrets.DingTalkToken }}
+DingTalkWord: ${{ secrets.DingTalkWord }}
+RedisUrl: ${{ secrets.RedisUrl }}
+WeiboUrl: ${{ secrets.WeiboUrl }}
+```
+
+当前脚本启动命令如下，可根据需求修改
+
+```bash
+cp config.py.example config.py
+python main.py action
+```
 
 ## 效果预览
 
