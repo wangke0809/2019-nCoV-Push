@@ -1,4 +1,5 @@
 import requests
+import re
 
 
 class SpiderMirror(object):
@@ -10,6 +11,7 @@ class SpiderMirror(object):
     def getPosts(self):
         res = requests.get(self.url)
         data = res.json()
+        print(data)
         res = []
         newId = self.postId
         for item in data['items']:
@@ -21,8 +23,14 @@ class SpiderMirror(object):
                 newId = id
             title = item['title']
             content = item['contentSnippet']
+            url = re.findall('（<a href="(.*?)" target="_blank" rel="noopener" onclick="return confirm', item['content'],
+                             re.S)
+            if url:
+                url = url[0]
+            else:
+                url = ''
             # id, tag, city, title, text, url
-            res.append((id, "", "", title, content, ""))
+            res.append((id, "", "", title, content, url))
         self.postId = newId
         return res
 

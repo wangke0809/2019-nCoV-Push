@@ -30,6 +30,8 @@ def run():
                 if useMirror:
                     pushTitle = title
                     pushText = text
+                    if url is not '':
+                        pushText += " 【转自：" + url + ' 】'
                 else:
                     pushTitle = ""
                     if tag:
@@ -44,7 +46,8 @@ def run():
                 if cityFilter and not isCityInTitle(cityFilter, pushTitle):
                     continue
                 log.info("send msg")
-                push.sendMsg(pushTitle, pushText)
+                print(pushText)
+                # push.sendMsg(pushTitle, pushText)
                 if usrAction:
                     state.setPostId(spider.postId)
                 if len(msgs) != i:
