@@ -46,8 +46,7 @@ def run():
                 if cityFilter and not isCityInTitle(cityFilter, pushTitle):
                     continue
                 log.info("send msg")
-                print(pushText)
-                # push.sendMsg(pushTitle, pushText)
+                push.sendMsg(pushTitle, pushText)
                 if usrAction:
                     state.setPostId(spider.postId)
                 if len(msgs) != i:
