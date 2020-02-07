@@ -24,7 +24,7 @@ class Spider(object):
             if len(content) > 0:
                 content = content[0]
             else:
-                content = ''
+                continue
 
             aTags = content.find_all('a')
             c1 = ''
