@@ -27,6 +27,9 @@ def run():
         if len(msgs) > 0:
             for id, tag, city, title, text, url in msgs:
                 i += 1
+                if text == '':
+                    continue
+
                 if useMirror:
                     pushTitle = title
                     pushText = text

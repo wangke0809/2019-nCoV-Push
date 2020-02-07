@@ -19,7 +19,13 @@ class Spider(object):
             id = int(idStr.split("/")[1])
             if id <= self.postId:
                 continue
-            content = i.select(".tgme_widget_message_text")[0]
+
+            content = i.select(".tgme_widget_message_text")
+            if len(content) > 0:
+                content = content[0]
+            else:
+                content = ''
+
             aTags = content.find_all('a')
             c1 = ''
             c2 = ''
