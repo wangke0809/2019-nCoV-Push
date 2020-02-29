@@ -6,6 +6,8 @@
 
 频道地址：https://t.me/s/nCoV2019
 
+发送微博：[WeiboSender](https://github.com/wangke0809/WeiboSender)
+
 为什么不使用频道提供的 RSS ？因为 RSS 内容不实时。
 
 为什么不抓取丁香园？因为丁香园聚合信息不够全。
@@ -47,11 +49,13 @@ cp config.py.example config.py
 
 ### 微博
 
-直接发微博：修改配置文件中微博发送地址和 cookie 即可。微博需要在网页版抓取登陆 Cookie 。
+~~直接发微博：修改配置文件中微博发送地址和 cookie 即可。微博需要在网页版手动抓取登陆 Cookie，且过期时间较短。~~
 
-由于部署在 AWS 海外区域，发现直接使用 Cookie 调用微博发送接口失败，于是在[腾讯云云函数(SCF)](https://cloud.tencent.com/document/product/583)上实现发送微博，进行远程调用。(阿里云同理，当然也可以自建服务)
+~~由于部署在 AWS 海外区域，发现直接使用 Cookie 调用微博发送接口失败，于是在[腾讯云云函数(SCF)](https://cloud.tencent.com/document/product/583)上实现发送微博，进行远程调用。(阿里云同理，当然也可以自建服务)~~
 
-如需使用云函数 SCF ，将 `weibo.py` 与 `weiboSCF.py` 上传至腾讯云 SCF，配置 API 网关触发方式即可，当然要修改`weiboSCF.py`里面的 `Cookie` 配置。 
+~~如需使用云函数 SCF ，将 `weibo.py` 与 `weiboSCF.py` 上传至腾讯云 SCF，配置 API 网关触发方式即可，当然要修改`weiboSCF.py`里面的 `Cookie` 配置。 ~~
+
+不建议使用上述方法，推荐使用[WeiboSender](https://github.com/wangke0809/WeiboSender)，登陆态维持时间长且比较稳定。
 
 ## 启动
 
