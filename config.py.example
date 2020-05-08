@@ -17,7 +17,8 @@ WeiboCookie = None
 
 # 发微博云函数，需要部署云函数
 # 不启用修改为 None
-WeiboSCFUrl = os.environ['WeiboUrl']
+WeiboSCFUrl = None
+# WeiboSCFUrl = os.environ['WeiboUrl']
 
 # 使用 github action 时需要使用 redis 记录上次抓取的信息 id
 # 不使用 action 设置为 None 即可
